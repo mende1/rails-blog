@@ -11,6 +11,10 @@
   </head>
 
   <body>
+    <%= render 'layouts/messages' %>
+    <h2>
+      <%= link_to "Rails Blog", root_path %>
+    </h2>
     <%= yield %>
   </body>
 </html>
