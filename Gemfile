@@ -74,5 +74,4 @@ end
 gem "solargraph", "~> 0.48.0"
 
 gem "mina", "~> 1.2"
-gem "pg", "~> 1.4"
 gem "unicorn", "~> 6.1"
