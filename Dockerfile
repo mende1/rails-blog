@@ -36,6 +36,9 @@ ARG BUNDLE_PATH=vendor/bundle
 ENV BUNDLE_PATH ${BUNDLE_PATH}
 ENV BUNDLE_WITHOUT ${BUNDLE_WITHOUT}
 
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y nodejs
+
 RUN mkdir /app
 WORKDIR /app
 RUN mkdir -p tmp/pids

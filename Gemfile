@@ -78,3 +78,5 @@ gem "unicorn", "~> 6.1"
 gem "pg", "~> 1.4"
 
 gem "bootstrap", "~> 5.2"
+
+gem 'execjs'
