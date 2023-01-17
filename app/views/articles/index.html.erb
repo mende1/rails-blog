@@ -9,6 +9,7 @@
           <th scope="col">#</th>
           <th scope="col">Title</th>
           <th scope="col">Description</th>
+          <th scope="col">Created at</th>
           <th scope="col">Actions</th>
         </tr>
       </thead>
@@ -19,6 +20,7 @@
             <td><%= article.id %></td>
             <td><%= article.title %></td>
             <td><%= truncate(article.body, length: 50) %></td>
+            <td><small>Created <%= time_ago_in_words(article.created_at) %> ago</td>
             <td>
               <%= link_to "View", article, class: "btn btn-outline-light btn-sm" %>
               <%= link_to "Edit", edit_article_path(article), class: "btn btn-outline-light btn-sm" %>
@@ -32,7 +34,7 @@
       </tbody>
     </table>
 
-    <%= link_to "New Article", new_article_path %>
+    <%= link_to "New Article", new_article_path, class: "btn btn-outline-light mt-3" %>
   </div>
 
 </div>

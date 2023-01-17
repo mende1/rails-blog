@@ -25,6 +25,11 @@ body {
   height: 100%;
 }
 
+body {
+  min-height: 100vh;
+}
+
 #page-content {
-  height: 83.65%;
+  min-height: 76vh;
+  margin-bottom: 4rem;
 }
