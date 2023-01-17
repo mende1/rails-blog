@@ -1,21 +1,42 @@
-<%= form_with model: article do |form| %>
-  <div>
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-    <% article.errors.full_messages_for(:title).each do |message| %>
-      <div><%= message %></div>
+<div class="row justify-content-center mt-4">
+  <div class="col-6 mt-4 shadow p-4 mb-5 bg-body-tertiary rounded">
+    <%= form_with model: article do |form| %>
+      <div class="row mb-4">
+        <%= form.label :title, 
+          class: "form-label col-lg-2 col-form-label col-form-label-lg",
+          for: "titleInput"
+        %>
+        <div class="col-sm-10">
+          <%= form.text_field :title, 
+            class: "form-control form-control-lg", 
+            id: "titleInput" 
+          %>
+        </div>
+      </div>
+      <% article.errors.full_messages_for(:title).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+
+      <div class="row mb-4">
+        <%= form.label :body, 
+          class: "form-label col-lg-2 col-form-label col-form-label-lg",
+          for: "bodyInput"
+        %>
+        <div class="col-sm-10">
+          <%= form.text_area :body, 
+            class: "form-control", 
+            style: "height: 150px",
+            id: "bodyInput"
+          %>
+        </div>
+      </div>
+      <% article.errors.full_messages_for(:body).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+
+      <div class="text-center mt-5">
+        <%= form.submit "Create article", class: "btn btn-outline-light btn-lg" %>
+      </div>
     <% end %>
   </div>
-
-  <div>
-    <%= form.label :body %>
-    <%= form.text_field :body %>
-    <% article.errors.full_messages_for(:body).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
