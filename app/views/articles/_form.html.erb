@@ -13,9 +13,6 @@
           %>
         </div>
       </div>
-      <% article.errors.full_messages_for(:title).each do |message| %>
-        <div><%= message %></div>
-      <% end %>
 
       <div class="row mb-4">
         <%= form.label :body, 
@@ -30,9 +27,8 @@
           %>
         </div>
       </div>
-      <% article.errors.full_messages_for(:body).each do |message| %>
-        <div><%= message %></div>
-      <% end %>
+
+      <%= render 'shared/errors' %>
 
       <div class="text-center mt-5">
         <%= form.submit "Create article", class: "btn btn-outline-light btn-lg" %>
