@@ -28,6 +28,23 @@
         </div>
       </div>
 
+      <div class="row mb-4 align-items-center">
+        <%= form.label :status,
+          class: "form-label col-lg-2 col-form-label col-form-label-lg",
+          for: "statusInput"
+        %>
+        <div class="col-sm-10">
+          <%= form.select :status, 
+            ['public', 'private', 'archived'], 
+            selected: 'public',
+            class: "form-select", 
+            style: "height: 150px",
+            id: "statusInput"
+          %>
+        </div>
+      </div>
+
+
       <%= render 'shared/errors' %>
 
       <div class="text-center mt-5">

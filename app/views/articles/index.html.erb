@@ -2,6 +2,7 @@
   <div class="container mt-4">
 
     <h1 class="text-center">Listing all articles</h1>
+    <p class="text-center">Our blog has <%= Article.public_count %> articles and counting!</p>
 
     <table class="table table-dark table-striped table-hover text-light mt-5">
       <thead>
@@ -17,21 +18,23 @@
 
       <tbody>
         <% @articles.each do |article| %>
-          <tr>
-            <td><%= article.id %></td>
-            <td><%= article.title %></td>
-            <td><%= truncate(article.body, length: 50) %></td>
-            <td><small>Created <%= time_ago_in_words(article.created_at) %> ago</td>
-            <td><small>Updated <%= time_ago_in_words(article.updated_at) %> ago</td>
-            <td>
-              <%= link_to "View", article, class: "btn btn-outline-light btn-sm" %>
-              <%= link_to "Edit", edit_article_path(article), class: "btn btn-outline-light btn-sm" %>
-              <%= link_to "Delete", article_path(article), class: "btn btn-outline-light btn-sm", data: {
-                turbo_method: :delete,
-                turbo_confirm: "Are you sure?"
-              } %>
-            </td>
-          </tr>
+          <% unless article.archived? %>
+            <tr>
+              <td><%= article.id %></td>
+              <td><%= article.title %></td>
+              <td><%= truncate(article.body, length: 50) %></td>
+              <td><small>Created <%= time_ago_in_words(article.created_at) %> ago</td>
+              <td><small>Updated <%= time_ago_in_words(article.updated_at) %> ago</td>
+              <td>
+                <%= link_to "View", article, class: "btn btn-outline-light btn-sm" %>
+                <%= link_to "Edit", edit_article_path(article), class: "btn btn-outline-light btn-sm" %>
+                <%= link_to "Delete", article_path(article), class: "btn btn-outline-light btn-sm", data: {
+                  turbo_method: :delete,
+                  turbo_confirm: "Are you sure?"
+                } %>
+              </td>
+            </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>
