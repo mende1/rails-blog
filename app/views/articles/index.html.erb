@@ -10,6 +10,7 @@
           <th scope="col">#</th>
           <th scope="col">Title</th>
           <th scope="col">Description</th>
+          <th scope="col">Author</th>
           <th scope="col">Created at</th>
           <th scope="col">Updated at</th>
           <th scope="col">Actions</th>
@@ -22,7 +23,8 @@
             <tr>
               <td><%= article.id %></td>
               <td><%= article.title %></td>
-              <td><%= truncate(article.body, length: 50) %></td>
+              <td><%= truncate(article.body, length: 30) %></td>
+              <td><%= article.user.name %></td>
               <td><small>Created <%= time_ago_in_words(article.created_at) %> ago</td>
               <td><small>Updated <%= time_ago_in_words(article.updated_at) %> ago</td>
               <td>
