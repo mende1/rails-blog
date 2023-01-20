@@ -1,15 +1,14 @@
 <div id="page-content">
   <div class="container mt-4">
 
-    <h1 class="text-center">Listing all articles</h1>
-    <p class="text-center">Our blog has <%= Article.public_count %> articles and counting!</p>
+    <h1 class="text-center">Listing all articles from <%= @user.name %></h1>
+    <p class="text-center"><%= @user.name %> has <%= @user.articles.count %> articles and counting!</p>
 
     <table class="table table-dark table-striped table-hover text-light mt-5">
       <thead>
         <tr>
           <th scope="col">Title</th>
           <th scope="col">Description</th>
-          <th scope="col">Author</th>
           <th scope="col">Created at</th>
           <th scope="col">Updated at</th>
           <th scope="col">Actions</th>
@@ -17,12 +16,11 @@
       </thead>
 
       <tbody>
-        <% @articles.each do |article| %>
+        <% @user.articles.each do |article| %>
           <% unless article.archived? %>
             <tr>
               <td><%= article.title %></td>
               <td><%= truncate(article.body, length: 30) %></td>
-              <td><%= link_to article.user.name, user_path(article.user) %></td>
               <td><small>Created <%= time_ago_in_words(article.created_at) %> ago</td>
               <td><small>Updated <%= time_ago_in_words(article.updated_at) %> ago</td>
               <td>

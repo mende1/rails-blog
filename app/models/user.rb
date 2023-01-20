@@ -5,6 +5,8 @@ class User < ApplicationRecord
 
   has_many :articles
 
+  validates :name, presence: true
+
   validates :username,
             presence: true,
             uniqueness: { case_sensitive: false },
@@ -14,4 +16,6 @@ class User < ApplicationRecord
             uniqueness: { case_sensitive: false },
             length: { maximum: 105 },
             format: { with: URI::MailTo::EMAIL_REGEXP }
+
+  has_secure_password
 end

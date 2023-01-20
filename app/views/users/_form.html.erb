@@ -1,0 +1,63 @@
+<div class="row justify-content-center mt-4">
+  <div class="col-6 mt-4 shadow p-4 mb-5 bg-body-tertiary rounded">
+    <%= form_with(model: @user) do |form| %>
+      <div class="row mb-4">
+        <%= form.label :name, 
+          class: "form-label col-lg-2 col-form-label col-form-label-lg",
+          for: "nameInput"
+        %>
+        <div class="col-sm-10">
+          <%= form.text_field :name, 
+            class: "form-control", 
+            id: "nameInput" 
+          %>
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <%= form.label :username, 
+          class: "form-label col-lg-2 col-form-label col-form-label-lg",
+          for: "usernameInput"
+        %>
+        <div class="col-sm-10">
+          <%= form.text_field :username, 
+            class: "form-control", 
+            id: "usernameInput" 
+          %>
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <%= form.label :email, 
+          class: "form-label col-lg-2 col-form-label col-form-label-lg",
+          for: "emailInput"
+        %>
+        <div class="col-sm-10">
+          <%= form.email_field :email, 
+            class: "form-control",
+            id: "emailInput"
+          %>
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <%= form.label :password, 
+          class: "form-label col-lg-2 col-form-label col-form-label-lg",
+          for: "passwordInput"
+        %>
+        <div class="col-sm-10">
+          <%= form.password_field :password, 
+            class: "form-control",
+            id: "passwordInput"
+          %>
+        </div>
+      </div>
+
+      <%= render 'shared/errors', obj: user %>
+
+      <div class="text-center mt-5">
+        <%= form.submit "#{method_msg} user", class: "btn btn-outline-light btn-lg" %>
+      </div>
+    <% end %>
+  </div>
+</div>

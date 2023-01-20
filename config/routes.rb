@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   resources :articles do
     resources :comments
   end
+
+  resources :users
+  get 'signup', to: 'users#new'
 end
