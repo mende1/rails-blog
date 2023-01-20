@@ -18,4 +18,8 @@ class User < ApplicationRecord
             format: { with: URI::MailTo::EMAIL_REGEXP }
 
   has_secure_password
+
+  def last_post
+    articles.order(created_at: :desc).first
+  end
 end

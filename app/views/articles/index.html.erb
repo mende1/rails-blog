@@ -17,14 +17,14 @@
       </thead>
 
       <tbody>
-        <% @articles.each do |article| %>
+        <% @articles.order(updated_at: :desc).each do |article| %>
           <% unless article.archived? %>
             <tr>
               <td><%= article.title %></td>
               <td><%= truncate(article.body, length: 30) %></td>
               <td><%= link_to article.user.name, user_path(article.user) %></td>
-              <td><small>Created <%= time_ago_in_words(article.created_at) %> ago</td>
-              <td><small>Updated <%= time_ago_in_words(article.updated_at) %> ago</td>
+              <td><small><%= time_ago_in_words(article.created_at) %> ago</td>
+              <td><small><%= time_ago_in_words(article.updated_at) %> ago</td>
               <td>
                 <%= link_to "View", article, class: "btn btn-outline-light btn-sm" %>
                 <%= link_to "Edit", edit_article_path(article), class: "btn btn-outline-light btn-sm" %>

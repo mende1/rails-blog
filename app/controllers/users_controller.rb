@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show edit update destroy]
+  before_action :set_user, only: %i[show edit update destroy last_post]
 
   def index
     @users = User.all
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to articles_path, notice: user_feedback('created')
+      redirect_to @user, notice: user_feedback('created')
     else
       render :new, status: :unprocessable_entity
     end
@@ -24,8 +24,8 @@ class UsersController < ApplicationController
   def edit; end
 
   def update
-    if @user.save
-      redirect_to articles_path, notice: user_feedback('updated')
+    if @user.update(user_params)
+      redirect_to @user, notice: user_feedback('updated')
     else
       render :edit, status: :unprocessable_entity
     end
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
 
-    redirect_to root_path, status: :see_other, notice: user_feedback('destroyed')
+    redirect_to users_path, status: :see_other, notice: user_feedback('destroyed')
   end
 
   private
