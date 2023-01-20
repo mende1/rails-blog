@@ -80,3 +80,7 @@ gem "pg", "~> 1.4"
 gem "bootstrap", "~> 5.2"
 
 gem 'execjs'
+
+# Markdown support
+gem 'coderay'
+gem 'redcarpet'

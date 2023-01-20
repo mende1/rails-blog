@@ -10,12 +10,12 @@
             turbo_confirm: "Are you sure?"
           }, class: "btn btn-outline-light btn-sm" %>
         </div>
-        <div class="mt-5" ><%= simple_format(@article.body) %></div>
+        <div class="mt-5" ><%= markdown(@article.body) %></div>
         <div class="pt-4">
           <p class="text-end fs-6 fw-light">Created <%= time_ago_in_words(@article.created_at) %> ago, 
               edited <%= time_ago_in_words(@article.updated_at) %> ago by <%= @article.user.name %></p>
         </div>
-      </>
+      </div>
 
     </div>
 
