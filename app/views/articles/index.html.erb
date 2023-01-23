@@ -12,7 +12,6 @@
           <th scope="col">Author</th>
           <th scope="col">Created at</th>
           <th scope="col">Updated at</th>
-          <th scope="col">Actions</th>
         </tr>
       </thead>
 
@@ -25,14 +24,7 @@
               <td><%= link_to article.user.name, user_path(article.user) %></td>
               <td><small><%= time_ago_in_words(article.created_at) %> ago</td>
               <td><small><%= time_ago_in_words(article.updated_at) %> ago</td>
-              <td>
-                <%= link_to "View", article, class: "btn btn-outline-light btn-sm" %>
-                <%= link_to "Edit", edit_article_path(article), class: "btn btn-outline-light btn-sm" %>
-                <%= link_to "Delete", article_path(article), class: "btn btn-outline-light btn-sm", data: {
-                  turbo_method: :delete,
-                  turbo_confirm: "Are you sure?"
-                } %>
-              </td>
+              <td><%= link_to "View", article, class: "btn btn-outline-light btn-sm" %></td>
             </tr>
           <% end %>
         <% end %>

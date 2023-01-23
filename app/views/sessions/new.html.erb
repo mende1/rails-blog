@@ -1,0 +1,39 @@
+<div id="page-content">
+  <div class="container mt-4">
+
+    <h1 class="text-center">Log in</h1>
+
+    <div class="row justify-content-center mt-4">
+      <div class="col-6 mt-4 shadow p-4 mb-5 bg-body-tertiary rounded align-items-center">
+        <%= form_with(scope: :session, url: login_path) do |form| %>
+          <div class="mb-4">
+            <%= form.label :username, 
+              class: "form-label col-lg-2 col-form-label col-form-label-lg",
+              for: "usernameInput"
+            %>
+            <%= form.text_field :username, 
+              class: "form-control", 
+              id: "usernameInput",
+              placeholder: "Please enter your username or email"
+            %>
+          </div>
+
+          <div class="mb-4">
+            <%= form.label :password, 
+              class: "form-label col-lg-2 col-form-label col-form-label-lg",
+              for: "passwordInput"
+            %>
+            <%= form.password_field :password, 
+              class: "form-control",
+              id: "passwordInput",
+              placeholder: "Please enter your password"
+            %>
+          </div>
+          <div class="text-center mt-5">
+            <%= form.submit "Log in", class: "btn btn-outline-light btn-lg" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

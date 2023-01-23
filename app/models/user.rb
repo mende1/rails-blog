@@ -3,7 +3,7 @@ class User < ApplicationRecord
     self.email = email.downcase
   end
 
-  has_many :articles
+  has_many :articles, dependent: :destroy
 
   validates :name, presence: true
 

@@ -10,8 +10,8 @@
           <th scope="col">Name</th>
           <th scope="col">Username</th>
           <th scope="col">Email</th>
+          <th scope="col">Posts</th>
           <th scope="col">Last post at</th>
-          <th scope="col">Actions</th>
         </tr>
       </thead>
 
@@ -21,14 +21,10 @@
             <td><%= user.name %></td>
             <td><%= user.username %></td>
             <td><%= truncate(user.email, length: 30) %></td>
+            <td><%= user.articles.count %></td>
             <td><small><%= user.articles.any? ? time_ago_in_words(user.last_post.created_at) + " ago" : "No posts yet" %></td>
             <td>
               <%= link_to "View", user, class: "btn btn-outline-light btn-sm" %>
-              <%= link_to "Edit", edit_user_path(user), class: "btn btn-outline-light btn-sm" %>
-              <%= link_to "Delete", user_path(user), class: "btn btn-outline-light btn-sm", data: {
-                turbo_method: :delete,
-                turbo_confirm: "Are you sure?"
-              } %>
             </td>
           </tr>
         <% end %>
