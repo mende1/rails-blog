@@ -1,7 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[show edit update destroy]
-  before_action :require_user, except: %i[show index]
-  before_action :require_same_user, only: %i[edit update destroy]
+  before_action :authenticate_user!, except: %i[index show]
 
   def index
     @articles = Article.all
@@ -50,10 +49,4 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
-  def require_same_user
-    return unless current_user != @article.user
-
-    flash[:error] = 'You do not have permission to edit this article'
-    redirect_to @article
-  end
 end

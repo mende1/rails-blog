@@ -1,0 +1,38 @@
+<div id="page-content">
+  <div class="container mt-4">
+
+    <h1 class="text-center">Listing all bloggers</h1>
+    <p class="text-center">Our blog has <%= User.count %> authors and counting!</p>
+
+    <table class="table table-dark table-striped table-hover text-light mt-5">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Username</th>
+          <th scope="col">Email</th>
+          <th scope="col">Posts</th>
+          <th scope="col">Last post at</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @users.order(updated_at: :desc).each do |user| %>
+          <tr>
+            <td><%= user.name %></td>
+            <td><%= user.username %></td>
+            <td><%= truncate(user.email, length: 30) %></td>
+            <td><%= user.articles.count %></td>
+            <%# <td><small><%= user.articles.any? ? time_ago_in_words(user.last_post.created_at) + " ago" : "No posts yet" %></td>
+            <td>
+              <%# <%= link_to "View", user, class: "btn btn-outline-light btn-sm" %>
+              View
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-outline-light mt-3" %>
+  </div>
+</div>
+
