@@ -22,10 +22,9 @@
             <td><%= user.username %></td>
             <td><%= truncate(user.email, length: 30) %></td>
             <td><%= user.articles.count %></td>
-            <%# <td><small><%= user.articles.any? ? time_ago_in_words(user.last_post.created_at) + " ago" : "No posts yet" %></td>
+            <td><small><%= user.articles.any? ? time_ago_in_words(user.last_post.created_at) + " ago" : "No posts yet" %></td>
             <td>
-              <%# <%= link_to "View", user, class: "btn btn-outline-light btn-sm" %>
-              View
+              <%= link_to "View", user, class: "btn btn-outline-light btn-sm" %>
             </td>
           </tr>
         <% end %>

@@ -35,7 +35,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_24_202330) do
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
-    t.string "username", default: "", null: false
     t.string "name", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -45,7 +44,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_24_202330) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "articles", "users"

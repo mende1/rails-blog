@@ -5,4 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :articles, dependent: :destroy
+
+  validates :name, presence: true
+
+  def last_post
+    articles.order(created_at: :desc).first
+  end
 end
