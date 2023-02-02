@@ -8,7 +8,6 @@
       <thead>
         <tr>
           <th scope="col">Name</th>
-          <th scope="col">Username</th>
           <th scope="col">Email</th>
           <th scope="col">Posts</th>
           <th scope="col">Last post at</th>
@@ -19,7 +18,6 @@
         <% @users.order(updated_at: :desc).each do |user| %>
           <tr>
             <td><%= user.name %></td>
-            <td><%= user.username %></td>
             <td><%= truncate(user.email, length: 30) %></td>
             <td><%= user.articles.count %></td>
             <td><small><%= user.articles.any? ? time_ago_in_words(user.last_post.created_at) + " ago" : "No posts yet" %></td>
